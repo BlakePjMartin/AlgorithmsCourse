@@ -63,15 +63,15 @@ Assignment 3 - Collinear Points
 ----------------------------
 
 <details>
-	<summary>Grade: --</summary>
+	<summary>Grade: 92/100</summary>
 	
 **Goal (taken from assigment specification):**   
 Write a program to recognize line patterns in a given set of points.
 
 **Files Submitted:**
-* Point.java
-* BruteCollinearPoints.java
-* FastCollinearPoints.java
+* [Point.java](collinear/src/Point.java)
+* [BruteCollinearPoints.java](collinear/src/BruteCollinearPoints.java)
+* [FastCollinearPoints.java](collinear/src/FastCollinearPoints.java)
 
 **Assignment Specification:**    
 https://coursera.cs.princeton.edu/algs4/assignments/collinear/specification.php

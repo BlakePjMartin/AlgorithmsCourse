@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="39c2caa9-0ca7-4a37-bacc-5d38922ec8fc" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="CLEAR_OUTPUT_DIRECTORY" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindBugs-IDEA-Workspace">
+    <analyzeAfterCompile>true</analyzeAfterCompile>
+    <toolWindowToFront>false</toolWindowToFront>
+  </component>
+  <component name="ProjectId" id="1nDb36fsEU3dbjV39JaVZrUJGQK" />
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showModules" value="false" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Application.FastCollinearPoints">
+    <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+    </configuration>
+    <configuration name="BruteCollinearPoints" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="BruteCollinearPoints" />
+      <module name="collinear" />
+      <option name="PROGRAM_PARAMETERS" value="input8.txt" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FastCollinearPoints" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="FastCollinearPoints" />
+      <module name="collinear" />
+      <option name="PROGRAM_PARAMETERS" value="input1000.txt" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Point" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Point" />
+      <module name="collinear" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="250" y="60" width="1190" height="585" key="#xdebugger.evaluate" timestamp="1611530615665">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="250" y="60" width="1190" height="585" key="#xdebugger.evaluate/0.25.1440.875@0.25.1440.875" timestamp="1611530615665" />
+    <state width="1440" height="244" key="GridCell.Tab.0.bottom" timestamp="1611539911720">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1440" height="244" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1611539911720" />
+    <state width="1440" height="244" key="GridCell.Tab.0.center" timestamp="1611539911718">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1440" height="244" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1611539911718" />
+    <state width="1440" height="244" key="GridCell.Tab.0.left" timestamp="1611539911712">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1440" height="244" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1611539911712" />
+    <state width="1440" height="244" key="GridCell.Tab.0.right" timestamp="1611539911720">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1440" height="244" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1611539911720" />
+    <state width="1440" height="247" key="GridCell.Tab.1.bottom" timestamp="1611534329010">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1440" height="247" key="GridCell.Tab.1.bottom/0.25.1440.875@0.25.1440.875" timestamp="1611534329010" />
+    <state width="1440" height="247" key="GridCell.Tab.1.center" timestamp="1611534329009">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1440" height="247" key="GridCell.Tab.1.center/0.25.1440.875@0.25.1440.875" timestamp="1611534329009" />
+    <state width="1440" height="247" key="GridCell.Tab.1.left" timestamp="1611534329009">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1440" height="247" key="GridCell.Tab.1.left/0.25.1440.875@0.25.1440.875" timestamp="1611534329009" />
+    <state width="1440" height="247" key="GridCell.Tab.1.right" timestamp="1611534329009">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1440" height="247" key="GridCell.Tab.1.right/0.25.1440.875@0.25.1440.875" timestamp="1611534329009" />
+    <state x="208" y="41" key="SettingsEditor" timestamp="1611261239411">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="208" y="41" key="SettingsEditor/0.25.1440.875@0.25.1440.875" timestamp="1611261239411" />
+  </component>
+</project>
