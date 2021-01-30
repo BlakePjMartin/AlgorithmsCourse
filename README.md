@@ -7,7 +7,7 @@ Motivation
 ----------------------------
 I enrolled in this course to:
 * Continue developing my Java programming skills
-* Review and learn that could be used in future projects
+* Review and learn algorithms that could be used in future projects
 * Receive feedback on assignments that were graded based on correctness, memory, and timing
 
 **Final Course Grade:**   
