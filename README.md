@@ -81,14 +81,14 @@ Assignment 4 - 8 Puzzle
 ----------------------------
 
 <details>
-	<summary>Grade: --</summary>
+	<summary>Grade: 100/100</summary>
 	
 **Goal (taken from assigment specification):**   
 Write a program to solve the 8-puzzle problem (and its natural generalizations) using the A* search algorithm.
 
 **Files Submitted:**
-* Board.java
-* Solver.java
+* [Board.java](8puzzle/src/Board.java)
+* [Solver.java](8puzzle/src/Solver.java)
 
 **Assignment Specification:**    
 https://coursera.cs.princeton.edu/algs4/assignments/8puzzle/specification.php
