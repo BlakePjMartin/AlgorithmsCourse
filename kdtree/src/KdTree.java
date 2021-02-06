@@ -21,10 +21,20 @@ public class KdTree {
         private Node right;
         private Point2D point;
         private int size;
+        private double minX;
+        private double maxX;
+        private double minY;
+        private double maxY;
 
         private Node(Point2D point, int size) {
             this.point = point;
             this.size = size;
+            double pointX = point.x();
+            double pointY = point.y();
+            this.minX = pointX;
+            this.maxX = pointX;
+            this.minY = pointY;
+            this.maxY = pointY;
         }
     }
 
@@ -71,8 +81,16 @@ public class KdTree {
         // check if the set is currently empty
         if (x == null) return new Node(p, 1);
 
+        // update the min and max values for the bounding box of the node
+        double pX = p.x();
+        double pY = p.y();
+        if (x.maxX < pX) x.maxX = pX;
+        if (x.minX > pX) x.minX = pX;
+        if (x.maxY < pY) x.maxY = pY;
+        if (x.minY > pY) x.minY = pY;
+
         // compare the values of the current node to the given point
-        double cmp = (step == HORIZONTAL) ? p.y() - x.point.y() : p.x() - x.point.x();
+        double cmp = (step == HORIZONTAL) ? pY - x.point.y() : pX - x.point.x();
         int nextStep = (step == VERTICAL) ? HORIZONTAL : VERTICAL;
 
         // decide what to do based on the cmp
@@ -219,9 +237,12 @@ public class KdTree {
         nearestNeighbour(checkDist > 0 ? node.left : node.right, p, nextStep);
 
         // check if the other direction is too far away - if not go down the path
-        if (checkDist * checkDist >= this.minDist)
+        Node nextNode = checkDist > 0 ? node.right : node.left;
+        RectHV secondSearchRect = nextNode == null ? null :
+                new RectHV(nextNode.minX, nextNode.minY, nextNode.maxX, nextNode.maxY);
+        if (secondSearchRect == null || secondSearchRect.distanceSquaredTo(p) > this.minDist)
             return;
-        nearestNeighbour(checkDist > 0 ? node.right : node.left, p, nextStep);
+        nearestNeighbour(nextNode, p, nextStep);
 
     }
 
@@ -230,6 +251,7 @@ public class KdTree {
      ********************************************************/
     public static void main(String[] args) {
         // left empty
+        
     }
 
 }
