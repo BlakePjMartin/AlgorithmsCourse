@@ -21,20 +21,10 @@ public class KdTree {
         private Node right;
         private Point2D point;
         private int size;
-        private double minX;
-        private double maxX;
-        private double minY;
-        private double maxY;
 
         private Node(Point2D point, int size) {
             this.point = point;
             this.size = size;
-            double pointX = point.x();
-            double pointY = point.y();
-            this.minX = pointX;
-            this.maxX = pointX;
-            this.minY = pointY;
-            this.maxY = pointY;
         }
     }
 
@@ -81,16 +71,8 @@ public class KdTree {
         // check if the set is currently empty
         if (x == null) return new Node(p, 1);
 
-        // update the min and max values for the bounding box of the node
-        double pX = p.x();
-        double pY = p.y();
-        if (x.maxX < pX) x.maxX = pX;
-        if (x.minX > pX) x.minX = pX;
-        if (x.maxY < pY) x.maxY = pY;
-        if (x.minY > pY) x.minY = pY;
-
         // compare the values of the current node to the given point
-        double cmp = (step == HORIZONTAL) ? pY - x.point.y() : pX - x.point.x();
+        double cmp = (step == HORIZONTAL) ? p.y() - x.point.y() : p.x() - x.point.x();
         int nextStep = (step == VERTICAL) ? HORIZONTAL : VERTICAL;
 
         // decide what to do based on the cmp
@@ -173,25 +155,36 @@ public class KdTree {
 
         this.inRange = new Stack<Point2D>();
 
-        rangeSearch(root, rect, VERTICAL);
+        rangeSearch(root, rect, VERTICAL, 0.0, 0.0, 1.0, 1.0);
 
         return this.inRange;
     }
 
-    private void rangeSearch(Node node, RectHV rect, int step) {
+    private void rangeSearch(Node node, RectHV rect, int step, double minX, double minY, double maxX, double maxY) {
         // if the node is null return
         if (node == null) return;
 
         // check if the current node is inside the rectangle
         if (rect.contains(node.point)) inRange.push(node.point);
 
-        // determine if the left, right, or both branches should be checked
-        boolean checkLeft = (step == VERTICAL) ? rect.xmin() < node.point.x() : rect.ymin() < node.point.y();
-        boolean checkRight = (step == VERTICAL) ? rect.xmax() > node.point.x() : rect.ymax() > node.point.y();
+        // info for checking left and right nodes
+        Node firstSearchNode = node.left;
+        Node secondSearchNode = node.right;
+        double firstMaxX = (step == VERTICAL) ? node.point.x() : maxX;
+        double firstMaxY = (step == HORIZONTAL) ? node.point.y() : maxY;
+        double secondMinX = (step == VERTICAL) ? node.point.x() : minX;
+        double secondMinY = (step == HORIZONTAL) ? node.point.y() : minY;
 
         int nextStep = (step == VERTICAL) ? HORIZONTAL : VERTICAL;
-        if (checkLeft) rangeSearch(node.left, rect, nextStep);
-        if (checkRight) rangeSearch(node.right, rect, nextStep);
+
+        // determine if the left, right, or both branches should be checked
+        RectHV firstRect = new RectHV(minX, minY, firstMaxX, firstMaxY);
+        RectHV secondRect = new RectHV(secondMinX, secondMinY, maxX, maxY);
+
+        if (firstRect.intersects(rect))
+            rangeSearch(firstSearchNode, rect, nextStep, minX, minY, firstMaxX, firstMaxY);
+        if (secondRect.intersects(rect))
+            rangeSearch(secondSearchNode, rect, nextStep, secondMinX, secondMinY, maxX, maxY);
 
     }
 
@@ -209,12 +202,12 @@ public class KdTree {
         this.minDist = 0;
         this.nearestNode = null;
 
-        nearestNeighbour(root, p, VERTICAL);
+        nearestNeighbour(root, p, VERTICAL, 0.0, 0.0, 1.0, 1.0);
 
         return nearestNode.point;
     }
 
-    private void nearestNeighbour(Node node, Point2D p, int step) {
+    private void nearestNeighbour(Node node, Point2D p, int step, double minX, double minY, double maxX, double maxY) {
         // return if at a leaf of the tree
         if (node == null) return;
 
@@ -231,18 +224,29 @@ public class KdTree {
 
         // check the linear distance between the current point and the edge of the bounding box
         double checkDist = (step == VERTICAL) ? node.point.x() - p.x() : node.point.y() - p.y();
+        Node firstSearchNode = (checkDist <= 0) ? node.right : node.left;
+        Node secondSearchNode = (checkDist <= 0) ? node.left : node.right;
+        double firstMinX = (checkDist <= 0 && step == VERTICAL) ? node.point.x() : minX;
+        double firstMinY = (checkDist <= 0 && step == HORIZONTAL) ? node.point.y() : minY;
+        double firstMaxX = (checkDist > 0 && step == VERTICAL) ? node.point.x() : maxX;
+        double firstMaxY = (checkDist > 0 && step == HORIZONTAL) ? node.point.y() : maxY;
+        double secondMinX = (checkDist > 0 && step == VERTICAL) ? node.point.x() : minX;
+        double secondMinY = (checkDist > 0 && step == HORIZONTAL) ? node.point.y() : minY;
+        double secondMaxX = (checkDist <= 0 && step == VERTICAL) ? node.point.x() : maxX;
+        double secondMaxY = (checkDist <= 0 && step == HORIZONTAL) ? node.point.y() : maxY;
+
         int nextStep = (step == VERTICAL) ? HORIZONTAL : VERTICAL;
 
         // go down the path that contains the test point
-        nearestNeighbour(checkDist > 0 ? node.left : node.right, p, nextStep);
+        nearestNeighbour(firstSearchNode, p, nextStep, firstMinX, firstMinY, firstMaxX, firstMaxY);
 
         // check if the other direction is too far away - if not go down the path
         Node nextNode = checkDist > 0 ? node.right : node.left;
-        RectHV secondSearchRect = nextNode == null ? null :
-                new RectHV(nextNode.minX, nextNode.minY, nextNode.maxX, nextNode.maxY);
+        RectHV secondSearchRect = secondSearchNode == null ? null :
+                new RectHV(secondMinX, secondMinY, secondMaxX, secondMaxY);
         if (secondSearchRect == null || secondSearchRect.distanceSquaredTo(p) > this.minDist)
             return;
-        nearestNeighbour(nextNode, p, nextStep);
+        nearestNeighbour(nextNode, p, nextStep, secondMinX, secondMinY, secondMaxX, secondMaxY);
 
     }
 
@@ -251,7 +255,7 @@ public class KdTree {
      ********************************************************/
     public static void main(String[] args) {
         // left empty
-        
+
     }
 
 }
