@@ -7,7 +7,7 @@ Motivation
 ----------------------------
 I enrolled in this course to:
 * Continue developing my Java programming skills
-* Review and learn that could be used in future projects
+* Review and learn algorithms that could be used in future projects
 * Receive feedback on assignments that were graded based on correctness, memory, and timing
 
 **Final Course Grade:**   
@@ -98,14 +98,14 @@ Assignment 5 - KD-Trees
 ----------------------------
 
 <details>
-	<summary>Grade: --</summary>
+	<summary>Grade: 100/100</summary>
 	
 **Goal (taken from assigment specification):**   
 Write a data type to represent a set of points in the unit square (all points have *x*- and *y*-coordinates between 0 and 1) using a *2d-tree* to support efficient *range search* (find all of the points contained in a query rectangle) and *nearest-neighbor search* (find a closest point to a query point).
 
 **Files Submitted:**
-* PointSET.java
-* KdTree.java
+* [PointSET.java](kdtree/src/PointSET.java)
+* [KdTree.java](kdtree/src/KdTree.java)
 
 **Assignment Specification:**    
 https://coursera.cs.princeton.edu/algs4/assignments/kdtree/specification.php
